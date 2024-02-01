@@ -66,11 +66,10 @@ public class SpellChecker {
 	}
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
-		String str = "";
 		int lev;
-		int minCounter = 0;
-		int min = 0;
 		int[] arr = new int[3000];
+		int minIndex = 0;
+
 
 		for (int i = 0; i < 3000; i++){
 
@@ -78,28 +77,24 @@ public class SpellChecker {
 			arr[i] = lev;
 		}
 
+		int min = arr[0];
+
 		for (int i = 0; i < arr.length; i++){
 
-			minCounter = 0;
-
-			for (int j = 0; j < arr.length; j++){
+			if(arr[i] < min)  {
 				
-				if(arr[i] < arr[j]) minCounter++;
+				min = arr[i];
+				minIndex = i;
 
-				if(minCounter == 2998) {
-					
-					str = dictionary[i];
-					min = arr[i];
-
-				}
 
 			}
-
 		}
 
-		if (min > threshold) return word;
-		else return str;
+		String str = dictionary[minIndex];
 
+		if (min > threshold) return word;
+		else return str;	
+	
 	}
 
 }
