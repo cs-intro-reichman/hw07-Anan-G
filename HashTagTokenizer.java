@@ -58,12 +58,7 @@ public class HashTagTokenizer {
 				System.out.println(hashtag.substring(0, i));
 				breakHashTag(hashtag.substring(i, N), dictionary);
 
-			}
-
-			
-			
-
-
+				}	
 			}
 
 
